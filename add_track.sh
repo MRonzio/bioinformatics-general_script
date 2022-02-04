@@ -1,8 +1,9 @@
 #!/bin/bash
 # this script needs to be run from the folder where input resides.
-# it adds tracking info to the first line of a bed file, and append "_track.bed" to the filename
-# the bed file will be moved to the "ucsc_tracks" folder whithin the same directory, which will 
-# be created if not already present.
+# it adds tracking info -for UCSC genome browser visualization- to the first line of a bed file.
+# it also appends "_track.bed" to the output filename.
+# the resulted bed file will be moved to the "ucsc_tracks" folder whithin the same directory, 
+# which will  be created if not present.
 
 # usage
 
