@@ -18,7 +18,7 @@ mkdir -p pscanchip_single_mat
 for f in ${@:3}
 do
 pscan_chip -r $f -g $genome -M $matrices -m $matrix
-mv  ${f}.ris pscanchip_single_mat/
+mv  ${f}.${matrix}.ris pscanchip_single_mat/
 done
 
 
