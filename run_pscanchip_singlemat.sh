@@ -14,11 +14,11 @@ genome=$pscanchip_folder/$1
 matrices=$pscanchip_folder/jaspar_2022_R.wil
 matrix=$2
 
-mkdir -p pscanchip
+mkdir -p pscanchip_single_mat
 for f in ${@:3}
 do
 pscan_chip -r $f -g $genome -M $matrices -m $matrix
-mv  ${f}.res pscanchip/
+mv  ${f}.res pscanchip_single_mat/
 done
 
 
