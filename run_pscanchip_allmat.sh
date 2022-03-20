@@ -9,14 +9,14 @@
 # usage
 # ./run_pscanchip.sh genome region file1.bed file2.bed .... fileN.bed
 
-pscanchip_folder= dirname $(readlink -f $(which pscan_chip))  # or set the absolute path of pscanchip folder
+pscanchip_folder=$(dirname $(readlink -f $(which pscan_chip)))  # or set the absolute path of pscanchip folder
 genome=$pscanchip_folder/$1
 matrix=$pscanchip_folder/jaspar_2022_R.wil
-bg=$pscanchip_folder/BG/$2.jaspar_2022_R.bg
+jasparbg=$pscanchip_folder/BG/$2.jaspar_2022_R.bg
 
 mkdir -p pscanchip
 for f in ${@:3}
 do
 pscan_chip -r $f -g $genome -M $matrix -bg $jasparbg
-mv  ${f}.ris pscanchip/
+mv  ${f}.res pscanchip/
 done
