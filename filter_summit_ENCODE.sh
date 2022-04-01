@@ -13,7 +13,7 @@ awk 'FNR == 1 {FS="\t"} {OFS="\t"} {out = "summit_temp/"FILENAME} ; {print $1, $
 cd summit_temp
 for f in $*
 do
-bedtools sort -i ${f} | bedtools merge -i -  > ${f%.*}_summits.bed
+bedtools sort -i ${f} > ${f%.*}_summits.bed
 rm ${f}
 done
 
