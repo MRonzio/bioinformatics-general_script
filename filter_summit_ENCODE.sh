@@ -9,7 +9,7 @@
 
 
 mkdir -p summit_temp
-awk 'FNR == 1 {FS="\t"} {OFS="\t"} {out = "summit_temp/"FILENAME} ; {print $1, $2+$10, $2+$10+1 > out}' $*
+awk 'FNR == 1 {FS="\t"} {OFS="\t"} {out = "summit_temp/"FILENAME} ; {print $1, $2+$10, $2+$10+1, $4, $5, $6, $7 > out}' $*
 cd summit_temp
 for f in $*
 do
