@@ -25,6 +25,7 @@ then
   DATA=$1
 else
   DATA=$TARGETDIR/data # data folder
+fi
 
 # RESULTS
 if [[ -z "$2" ]];
@@ -32,6 +33,7 @@ then
   RESULTS=$2
 else
   RESULTS=$TARGETDIR/results # results folder
+fi
 
 # REF
 if [[ -z "$3" ]];
@@ -39,12 +41,14 @@ then
   REF=$3
 else
   REF=$HOME/RefFolder/ReferenceName  # rsem previously prepared reference
+fi
 
 if [[ -z "$4" ]];
 then
   NPROC=$4
 else
   NPROC=8 # number of cores
+fi
 
 
 if test -d $RESULTS;then
@@ -68,3 +72,4 @@ for f in $DATA/*_1.fastq.gz
     rsem-calculate-expression -p $NPROC --paired-end --star --estimate-rspd --no-bam-output --star-gzipped-read-file --append-names ${name}_{1,2}.fastq.gz $REF $res
 	echo "ended ${onlyname} at ${date}"
 done
+
