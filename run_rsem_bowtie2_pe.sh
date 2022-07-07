@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # intended usage in background:
-# nohup ./run_rsem_bowtie2_pe.sh &> run_rsem_bowtie2_pe.log &
+# nohup ./run_rsem_bowtie2_pe.sh [data folder] [results folder] [reference] [nproc] &> run_rsem_bowtie2_pe.log &
 
 # fastq file should be in .fastq.gz and paired end,
 # otherwise editing of some lines of code is needed.
@@ -12,11 +12,42 @@ date
 set -e
 echo ""
 
-TARGETDIR=$HOME # common path
+# manually set variables
+TARGETDIR=$PWD # common path
 DATA=$TARGETDIR/data # data folder
 RESULTS=$TARGETDIR/results # results folder
 REF=$HOME/RefFolder/ReferenceName  # rsem previously prepared reference
 NPROC=8 # number of cores
+
+# DATA
+if [[ -z "$1" ]];
+then
+  DATA=$1
+else
+  DATA=$TARGETDIR/data # data folder
+
+# RESULTS
+if [[ -z "$2" ]];
+then
+  RESULTS=$2
+else
+  RESULTS=$TARGETDIR/results # results folder
+
+# REF
+if [[ -z "$3" ]];
+then
+  REF=$3
+else
+  REF=$HOME/RefFolder/ReferenceName  # rsem previously prepared reference
+
+if [[ -z "$4" ]];
+then
+  NPROC=$4
+else
+  NPROC=8 # number of cores
+
+
+
 
 
 if test -d $RESULTS;then
