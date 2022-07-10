@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # intended usage in background:
-# nohup ./un_rsem_star_pe.sh [data folder] [results folder] [reference] [nproc] &> un_rsem_star_pe_pe.log &
+# nohup ./un_rsem_star_pe.sh [data folder] [results folder] [reference] [nproc] [SRAlistfile] &> un_rsem_star_pe_pe.log &
 
 # fastq file should be in .fastq.gz and paired end,
 # otherwise editing of some lines of code is needed.
@@ -18,7 +18,8 @@ DATA=$TARGETDIR/data # data folder
 RESULTS=$TARGETDIR/results # results folder
 REF=$HOME/RefFolder/ReferenceName  # rsem previously prepared reference
 NPROC=8 # number of cores
-SRAlistfile=$(grep _1.fastq.gz SRA_download_filenames.txt) # 
+SRAlistfile="SRA_download_filenames.txt"
+
 
 # ... or set parameters con cli run
 # DATA
@@ -52,6 +53,13 @@ else
   NPROC=$4
 fi
 
+if [[ -z "$5" ]];
+then
+  SRAlistfile="SRA_download_filenames.txt" # number of cores
+else
+  SRAlistfile=$5
+fi
+
 
 if test -d $RESULTS;then
 	echo "directory already present, using it"
@@ -60,7 +68,8 @@ else
 	mkdir -p $RESULTS
 fi
 
-for f in $DATA/$SRAlistfile
+SRAlist=$(grep _1.fastq.gz ${SRAlistfile}) # 
+for f in $DATA/$SRAlist
 	do
 	name=${f%_*}
 	onlyname=$(basename $name)
