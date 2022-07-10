@@ -12,42 +12,43 @@ date
 set -e
 echo ""
 
-# manually set variables
+# manually set variables ...
 TARGETDIR=$PWD # common path
 DATA=$TARGETDIR/data # data folder
 RESULTS=$TARGETDIR/results # results folder
 REF=$HOME/RefFolder/ReferenceName  # rsem previously prepared reference
 NPROC=8 # number of cores
 
+# ... or set parameters con cli run
 # DATA
 if [[ -z "$1" ]];
 then
-  DATA=$1
-else
   DATA=$TARGETDIR/data # data folder
+else
+  DATA=$1
 fi
 
 # RESULTS
 if [[ -z "$2" ]];
 then
-  RESULTS=$2
-else
   RESULTS=$TARGETDIR/results # results folder
+else
+  RESULTS=$2
 fi
 
 # REF
 if [[ -z "$3" ]];
 then
-  REF=$3
-else
   REF=$HOME/RefFolder/ReferenceName  # rsem previously prepared reference
+else
+  REF=$3
 fi
 
 if [[ -z "$4" ]];
 then
-  NPROC=$4
-else
   NPROC=8 # number of cores
+else
+  NPROC=$4
 fi
 
 
