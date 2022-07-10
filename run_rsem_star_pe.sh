@@ -18,6 +18,7 @@ DATA=$TARGETDIR/data # data folder
 RESULTS=$TARGETDIR/results # results folder
 REF=$HOME/RefFolder/ReferenceName  # rsem previously prepared reference
 NPROC=8 # number of cores
+SRAlistfile=$(grep _1.fastq.gz SRA_download_filenames.txt) # 
 
 # ... or set parameters con cli run
 # DATA
@@ -59,7 +60,7 @@ else
 	mkdir -p $RESULTS
 fi
 
-for f in $DATA/*_1.fastq.gz
+for f in $DATA/$SRAlistfile
 	do
 	name=${f%_*}
 	onlyname=$(basename $name)
@@ -69,7 +70,7 @@ for f in $DATA/*_1.fastq.gz
 		continue
 	fi
 	echo "starting processing ${onlyname} at ${date}"
-	echo "Read 1 and Read 2: ${name}_{1,2}.fastq.gz"
+	echo "Read 1 and Read 2: $(ls ${name}_{1,2}.fastq.gz)"
     rsem-calculate-expression -p $NPROC --paired-end --star --estimate-rspd --no-bam-output --star-gzipped-read-file --append-names ${name}_{1,2}.fastq.gz $REF $res
 	echo "ended ${onlyname} at ${date}"
 done

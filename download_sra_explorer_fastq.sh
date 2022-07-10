@@ -2,7 +2,7 @@
 
 # USAGE
 
-./download_sra_explorer_fastq.sh output_script_downloaded_from_sra_explorer.sh
+# ./download_sra_explorer_fastq.sh output_script_downloaded_from_sra_explorer.sh
 
 
 # stop if any problems
@@ -23,13 +23,13 @@ awk -F "-o" '{print $2}' $SRAFILE > SRA_download_filenames.txt
 echo "editing download commands.."
 echo "saving download commands to download_script.sh.."
 sed '1 ! s/$/ -C -/' $SRAFILE > download_script.sh
-
+chmod +x download_script.sh
 
 # first time
-bash download_script.sh
+./download_script.sh
 
 # retry if any problem
-bash download_script.sh
+./download_script.sh
 
 
 # remove temp script
