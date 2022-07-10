@@ -16,7 +16,7 @@ echo "reading file" $SRAFILE
 
 # print list of file names
 echo "saving list of sra files to SRA_download_filenames.txt.."
-awk -F "-o" '{print $2}' $SRAFILE > SRA_download_filenames.txt
+awk -F "-o" 'NR>2 {print $2}' $SRAFILE > SRA_download_filenames.txt
 
 
 # editing download commands
