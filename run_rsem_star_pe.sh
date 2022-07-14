@@ -21,7 +21,7 @@ NPROC=8 # number of cores
 SRAlistfile="SRA_download_filenames.txt"
 
 
-# ... or set parameters con cli run
+# ... or set parameters on cli run
 # DATA
 if [[ -z "$1" ]];
 then
@@ -55,7 +55,7 @@ fi
 
 if [[ -z "$5" ]];
 then
-  SRAlistfile="SRA_download_filenames.txt" # number of cores
+  SRAlistfile="SRA_download_filenames.txt" # SRA list file with fastq filenames
 else
   SRAlistfile=$5
 fi
