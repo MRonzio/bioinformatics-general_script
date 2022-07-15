@@ -20,17 +20,30 @@ def cliopt():
     parser = argparse.ArgumentParser(description='multiple text files merger in excel')
     parser.add_argument('-o', '--outfile', dest='outfilename', default='merge.xls', help='output excel filename including extension')
     parser.add_argument('-i', '--inputfiles', dest='files', help='input files to merge',nargs='*',required=True)
+    parser.add_argument('-r', '--remove-extension', dest='rmext', help='remove extension from filename in sheetnames', default=False)
     parser.add_argument('-s', '--sep', dest='separator', help='if multiple columns: separator character, default is tab, i.e. \t', default="\t")
     return parser.parse_args()
 
+# parse
 opt=cliopt()
 files = opt.files
 separator=opt.separator
 
+def clean_name(fullname):
+    rmext_bool=bool(opt.rmext)
+    if rmext_bool==True:
+        filename=os.path.splitext(fullname)[0]
+        print(f'filename without extension {filename}')
+    else:
+        filename=fullname
+        print(f'filename with extension {filename}')
+    return(os.path.basename(filename))
+
+# Create and save excel file
 workbook = openpyxl.Workbook()
 for file in files:
     if os.path.isfile(file):
-        filename=os.path.basename(file)
+        filename=clean_name(fullname=file)
         workbook.create_sheet(filename)
         print(f"Created {filename} excel sheet")
         df=pd.read_table(file,sep=separator, header=None)
