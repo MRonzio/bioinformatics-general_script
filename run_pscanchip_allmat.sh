@@ -3,8 +3,9 @@
 # it runs pscanchip software on chip-seq summits peaks (or symmetrically extended from summits).
 # the resulted bed.ris file will be moved to the "pscanchip" folder whithin the same directory, 
 # which will  be created if not present.
-# genome hg19 or mm10
-# region mixed or promoters
+# pscan_chip needs computed background for each genome and set of matrices loaded.
+# you need to prepare those beforehead running this script.
+# region mixed or promoters or whichever the ones where background has beend built.
 
 # usage
 # ./run_pscanchip.sh genome region file1.bed file2.bed .... fileN.bed
