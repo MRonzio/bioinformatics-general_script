@@ -3,7 +3,7 @@
 # it runs pscanchip software on chip-seq summits peaks (or symmetrically extended from summits).
 # the resulted bed.ris file will be moved to the "pscanchip" folder whithin the same directory, 
 # which will  be created if not present.
-# genome hg19 or mm10
+# genome hg38, hg19 or mm10
 # region mixed or promoters
 
 # usage

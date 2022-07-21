@@ -3,7 +3,7 @@
 # it runs pscanchip software on chip-seq summits peaks (or symmetrically extended from summits).
 # the resulted bed.ris file will be moved to the "pscanchip" folder whithin the same directory, 
 # which will  be created if not present.
-# genome: hg19 or mm10
+# genome: hg38, hg19 or mm10
 # matrix: any jaspar matrix (e.g. MA0060.1)
 
 # usage
@@ -20,11 +20,4 @@ do
 pscan_chip -r $f -g $genome -M $matrices -m $matrix
 mv  ${f}.${matrix}.ris pscanchip_single_mat/
 done
-
-
-
-
-
-
-
 
