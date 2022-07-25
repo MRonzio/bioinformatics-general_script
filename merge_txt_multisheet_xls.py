@@ -23,11 +23,11 @@ def cliopt():
     parser.add_argument('-i', '--inputfiles', dest='files',
      help='input files to merge',nargs='*',required=True)
     parser.add_argument('-r', '--remove-extension', dest='rmext',
-     help='remove extension from filename in sheetnames', default=False)
+     help='remove extension from filename in sheetnames', action='store_true')
     parser.add_argument('-s', '--sep', dest='separator',
      help='if multiple columns: separator character, default is tab, i.e. \t', default="\t")
-    parser.add_argument('-ow', '--overwrite', dest='overwrite',
-     help='overwrite any existing file with same name, default False', default=False)
+    parser.add_argument('-ow', '--overwrite', dest='overwrite',action='store_true',
+     help='overwrite any existing file with same name')
     return parser.parse_args()
 
 # parse
@@ -62,11 +62,11 @@ for file in files:
 workbook.remove(workbook['Sheet'])
 
 if os.path.isfile(opt.outfilename):
-    print(f"{opt.outfilename} Already exist")
+    print(f"{opt.outfilename} Already exists")
     if overwrite==True:
-        print(f"You set --overwrite=True so it will be overwritten.")
+        print(f"You set --overwrite so it will be overwritten.")
         workbook.save(opt.outfilename)
         print("done")
     else:
-        print(f"Could not save the file, rerun with --overwrite=True.")
+        print(f"Could not save the file, change file name or rerun with --overwrite.")
     
