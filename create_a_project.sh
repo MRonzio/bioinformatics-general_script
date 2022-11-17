@@ -45,13 +45,6 @@ echo *.Rmd
 # genetic data file formats
 echo *.bgen
 echo *.gen
-# files generated from BlueCrystal jobs
-echo out*
-echo error*
-echo j*.sh.e*
-echo j*.sh.o*
-echo *.sh.e*
-echo *.sh.o*
 # UK Biobank data file formats
 echo *.enc_ukb
 echo *.enc
@@ -59,6 +52,7 @@ echo *.cwa
 # common directories
 echo manuscript
 echo data
+echo documents
 echo analysis
 echo environment
 ) > .gitignore
