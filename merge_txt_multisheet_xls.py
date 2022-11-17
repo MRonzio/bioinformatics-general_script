@@ -69,4 +69,6 @@ if os.path.isfile(opt.outfilename):
         print("done")
     else:
         print(f"Could not save the file, change file name or rerun with --overwrite.")
+else:
+    workbook.save(opt.outfilename)
     
