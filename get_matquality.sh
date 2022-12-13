@@ -3,7 +3,7 @@
 
 #usage
 
-#./get_matquality.sh output.ris jaspar_matrix [output2.ris] [output3.ris] .... [outputN.ris]
+#./get_matquality.sh jaspar_matrix output.ris [output2.ris] [output3.ris] .... [outputN.ris]
 # known score values : NFYA MA0060.1 = 0.76023
 # known score values : TBP MA0108.2 = 0.7816
 # known score values : USF1 MA0093.2 = 0.7766
