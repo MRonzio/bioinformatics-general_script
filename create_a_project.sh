@@ -4,7 +4,7 @@
 
 # usage
 # ./create_project.sh project_name github_username
-# e.g. ./create_project mynewproject MRonzio
+# e.g. ./create_project.sh mynewproject MRonzio
 
 projectname=$1
 username=$2
