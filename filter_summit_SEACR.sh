@@ -5,10 +5,10 @@
 # and appends _summits.bed to the end of filename (fixed for extension). 
 
 # usage
-# ./filter_summit_SEACR.sh seacrpeaks1.bed [seacrpeaks2.bed] seacrpeaks3.bed] ... [seacrpeaksN.bed]
+# ./filter_summit_SEACR.sh seacrpeaks1.bed [seacrpeaks2.bed] [seacrpeaks3.bed] ... [seacrpeaksN.bed]
 
 mkdir -p summit_temp
-awk 'FNR == 1 -F"\t|-|:" {OFS="\t"} {out = "summit_temp/"FILENAME} ; {print $1, ($8+$7)/2, ($8+$7/2)+1, $4, $5 > out}' $*
+awk -F "\t|-|:" '{OFS="\t"} {out = "summit_temp/"FILENAME} ;{start=int(($7+$8)/2+0.5); end=start+1}{print $1, start,end, $4, $5 > out}' $*
 cd summit_temp
 for f in $*
 do

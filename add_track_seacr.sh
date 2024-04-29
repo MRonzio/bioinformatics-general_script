@@ -8,7 +8,7 @@
 
 # usage
 
-# ./add_tracks.sh file1.bed file2.bed .... fileN.bed
+# ./add_track_seacr.sh file1.bed file2.bed .... fileN.bed
 
 mkdir -p ucsc_tracks
 for f in $*
